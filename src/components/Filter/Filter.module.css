@@ -1,0 +1,18 @@
+.label {
+    margin-left: 30px;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  
+  .input {
+    display: block; 
+    border: solid 1px grey;
+    border-radius: 3px;
+    padding: 5px;
+  }
+  
+  .input:focus {
+    border: solid 2px rgb(6, 100, 240);
+    border-radius: 3px;
+    outline: none;
+  }
