@@ -1,11 +1,10 @@
-import React from 'react';
 import styles from './Contacts.module.css';
 import PropTypes from 'prop-types';
 
-const Contacts = ({ searchContact, deleteContact }) => {
+const Contacts = ({ onSearchContact, onDeleteContact }) => {
     return (
         <ul className={styles.list}>
-            {searchContact.map(({ id, name, number }) => {
+            {onSearchContact.map(({ id, name, number }) => {
                 return (
                     <li className={styles.item} key={id}>
                         <p className={styles.contact}>
@@ -15,7 +14,7 @@ const Contacts = ({ searchContact, deleteContact }) => {
                         <button
                             type="button"
                             className={styles.btn}
-                            onClick={() => deleteContact(id)}
+                            onClick={() => onDeleteContact(id)}
                         >
                             Delete
             </button>

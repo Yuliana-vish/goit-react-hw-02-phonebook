@@ -1,5 +1,4 @@
 import { createUseStyles } from 'react-jss';
-//import styles from './Title.css';
 import PropTypes from 'prop-types';
 
 const useStyles = createUseStyles({
@@ -10,8 +9,6 @@ const useStyles = createUseStyles({
     marginBottom: 10,
   },
 });
-
-
 
 const Title = ({ title }) => {
     const classes = useStyles();

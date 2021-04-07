@@ -1,15 +1,14 @@
-
 import styles from './Filter.module.css';
 import PropTypes from 'prop-types';
 
-const Filter = ({ filter, searchContact }) => {
+const Filter = ({ filter, onSearchContact }) => {
     return (
         <label className={styles.label}>
             {' '}
       Find contacts by name
             <input
                 className={styles.input}
-                onChange={event => searchContact(event.target.value)}
+                onChange={event => onSearchContact(event.target.value)}
                 value={filter}
             />
         </label>
@@ -17,7 +16,7 @@ const Filter = ({ filter, searchContact }) => {
 };
 
 Filter.propTypes = {
-    searchContact: PropTypes.func.isRequired,
+    onSearchContact: PropTypes.func.isRequired,
 };
 
 export default Filter;

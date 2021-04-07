@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
-import styles from './Form.module.css';
+import { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
+import FormButton from './FormButton';
+import FormName from './FormName';
+import FormNumber from './FormNumber';
+import styles from './Form.module.css';
 
 class Form extends Component {
     static propTypes = {
-        addContact: PropTypes.func.isRequired,
+       onAddContact: PropTypes.func.isRequired,
     };
 
     state = {
@@ -22,13 +25,13 @@ class Form extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        const { addContact } = this.props;
+        const { onAddContact } = this.props;
         const contact = {
             id: uuidv4(),
             name: this.state.name,
             number: this.state.number,
         };
-        addContact(contact);
+        onAddContact(contact);
         this.setState({
             name: '',
             number: '',
@@ -37,39 +40,11 @@ class Form extends Component {
     render() {
         const { name, number } = this.state;
         return (
-         
-            <form className={styles.form} onSubmit={this.handleSubmit}>
-              <label className={styles.label}>
-                Name
-                <input
-                  type="text"
-                  value={name}
-                  name="name"
-                  onChange={this.handleChange}
-                  placeholder="Enter your full name"
-                  className={styles.input}
-                  required
-                />
-              </label>
-              <label className={styles.label}>
-                Number
-                <input
-                  type="text"
-                  value={number}
-                  name="number"
-                  onChange={this.handleChange}
-                  placeholder="xxx-xx-xx"
-                  className={styles.input}
-                  required
-                />
-              </label>
-              <input
-                type="submit"
-                value="Add contact"
-                className={styles.button}
-              />
-            </form>
-          
+          <form className={styles.form} onSubmit={this.handleSubmit}>
+            <FormName handleChange={this.handleChange} name={name} />
+            <FormNumber handleChange={this.handleChange} number={number} />
+            <FormButton />
+          </form>
         );
     }
 }

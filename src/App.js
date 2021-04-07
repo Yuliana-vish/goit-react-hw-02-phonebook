@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import Title from './components/Title';
 import Form from './components/Form';
 import Contacts from './components/Contacts';
@@ -12,7 +12,7 @@ class App extends Component {
     filter: '',
   };
 
-  handleNewContact = contact => {
+  onAddContact = contact => {
     let { contacts } = this.state;
     if (contacts.find(({ name }) => name === contact.name)) {
       alert(`${contact.name} is already in contacts`);
@@ -22,18 +22,18 @@ class App extends Component {
     this.setState({ contacts });
   };
 
-  handleFilter = filter => {
+  onFilterContact = filter => {
     this.setState({ filter });
   };
 
-  handleContactSearch = () => {
+  onSearchContact = () => {
     const { contacts, filter } = this.state;
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase()),
     );
   };
 
-  deleteContact = id => {
+  onDeleteContact = id => {
     this.setState(prevstate => {
       return {
         contacts: prevstate.contacts.filter(contact => contact.id !== id),
@@ -46,14 +46,14 @@ class App extends Component {
       <>
         <section className="phonebook">
           <Title title="Phonebook" />
-          <Form addContact={this.handleNewContact} />
+          <Form onAddContact={this.onAddContact} />
         </section>
         <section className="contacts">
           <Title title="Contacts" />
-          <Filter searchContact={this.handleFilter} value={filter} />
+          <Filter onSearchContact={this.onFilterContact} value={filter} />
           <Contacts
-            searchContact={this.handleContactSearch()}
-            deleteContact={this.deleteContact}
+            onSearchContact={this.onSearchContact()}
+            onDeleteContact={this.onDeleteContact}
           />
         </section>
       </>

@@ -29,15 +29,3 @@
     outline: none;
 }
   
-.button {
-    width: 100px;
-    border-radius: 3px;
-    background-color: rgb(253, 252, 252);
-    outline: none;
-}
-  
-  .button:hover,
-  .button:focus {
-    background-color: blue;
-    color: white;
-}
